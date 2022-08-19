@@ -18,7 +18,15 @@ app.get("/blog/:artigo?",function(req,res){
 });
 
 app.get("/canal/youtube",function(req,res){
- res.send('Bem vindo ao meu canal!');
+ const canal = req.query["canal"];
+canal ?  res.send(`
+ <h1>
+  Bem vindo ao canal <span style="color:red">${canal}</span> !
+ </h1>`):
+ res.send(`
+  <h1>Não tem nenhum canal selecionado!</h1>
+  <img src="https://www.cambridge.org/elt/blog/wp-content/uploads/2019/07/Sad-Face-Emoji-480x480.png.webp">
+ `)
 });
 
 app.get("/ola/:nome/:empresa",function(req,res){
